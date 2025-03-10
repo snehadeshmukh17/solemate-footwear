@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Solemate Footwear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #8B4513; /* Brown */
+            --secondary-color: #e4d7d4; /* Beige */
+            --accent-color: #A0522D; /* Sienna */
+            --text-color: #3C2415; /* Dark Brown */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 2rem;
+            background-color: rgba(139, 69, 19, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .main-content {
+            margin-top: 80px; /* Ensure content is not covered by navbar */
+        }
+
+        /* About Us Section */
+        .about-us {
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: rotateY(10deg);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: rotateY(0);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Team Section */
+        .team {
+            background-color: var(--secondary-color);
+            padding-top: 0;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 2rem;
+            flex: 1 1 calc(33.333% - 2rem);
+            max-width: calc(33.333% - 2rem);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-form {
+            margin-top: 1.5rem;
+            display: flex;
+        }
+
+        .newsletter-input {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            flex-grow: 1;
+        }
+
+        .newsletter-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.4s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .carousel-content h1 {
+                font-size: 2rem;
+            }
+            
+            .carousel-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .about-text {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-content {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+            
+            .carousel-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: rgba(139, 69, 19, 0.9);
+        }
+
+        li {
+            display: inline-block;
+            position: relative;
+        }
+
+        a {
+            display: block;
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: rgba(139, 69, 19, 0.9);
+            border-radius: 40px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #8B4513;
+            min-width: 180px;
+            border-radius: 40px;
+        }
+
+        .dropdown li {
+            display: block;
+        }
+
+        li:hover > .dropdown {
+            display: block;
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\index.html" class="logo">
+        <img src="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\images\logo-removebg-preview.png" alt="Solemate logo">
+        Solemate
+    </a>
+    
+    <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <ul class="nav-links">
+        <li><a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\index.html">Home</a></li>
+        <li><a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\cld collection.html">Collections</a>
+            <ul class="dropdown">
+                <li><a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\cld collection.html">Men's collections</a></li>
+                <li><a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\cld collection.html">Women's collections</a></li>
+                <li><a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\cld collection.html">Kid's collections</a></li>
+            </ul></li>
+        <li><a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\about us.html">About Us</a></li>
+        <li><a href="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\services.html">Services</a></li>
+     
+        <li>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <!-- About Us Section -->
+    <section id="about-us" class="about-us">
+        <div class="container">
+            <h2 class="section-title fade-in">About Us</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2020, Solemate Footwear was born out of a passion for creating high-quality, stylish, and comfortable footwear for every occasion. Our mission is to provide our customers with the best possible products and service, ensuring that every step they take is a confident one. We believe that great shoes can transform an outfit, boost confidence, and make a lasting impression.</p>
+                    <p>At Solemate, we are committed to sustainability and ethical practices. We source our materials responsibly and work with skilled artisans to create footwear that is not only beautiful but also built to last. Our designs are inspired by timeless classics and modern trends, ensuring that there's something for everyone in our collection.</p>
+                    <p>Thank you for choosing Solemate Footwear. We look forward to being a part of your journey, one step at a time.</p>
+                </div>
+                <div class="about-image">
+                    <img src="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\images\abt.webp" alt="About Us Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title fade-in">Meet Our Team</h2>
+            <div class="team-members fade-in">
+                <div class="team-member">
+                    <img src="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\images\r3.jpg" alt="Team Member">
+                    <h3>shresh</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\images\r1.jpg" alt="Team Member">
+                    <h3>Jane </h3>
+                    <p>Chief Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="C:\Users\saksh\OneDrive\Desktop\snehaa\websites\images\r2.jpg" alt="Team Member">
+                    <h3>samantha</h3>
+                    <p>Marketing Director</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Solemate</h3>
+                <p>Crafting premium footwear that combines style, comfort, and durability for every step of your journey.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collections">Shop</a></li>
+                    <li><a href="#about-us">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Help & Info</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for exclusive offers and updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" class="newsletter-input">
+                    <button type="submit" class="newsletter-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Solemate Footwear. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+           
+
+<!-- Scripts -->
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+
+    // Scroll animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    function checkFade() {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('appear');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkFade);
+
+    // Initial check when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+        checkFade();
+    });
+</script>
+</body>
+</html>
